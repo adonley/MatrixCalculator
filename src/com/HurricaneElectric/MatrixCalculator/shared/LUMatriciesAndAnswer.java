@@ -1,7 +1,10 @@
 package com.HurricaneElectric.MatrixCalculator.shared;
 
-public class LUMatriciesAndAnswer {
+import java.io.Serializable;
+
+public class LUMatriciesAndAnswer implements Serializable {
 	
+	private static final long serialVersionUID = 6052289893393235058L;
 	private double L[][];
 	private double U[][];
 	private double ans[];
@@ -50,8 +53,18 @@ public class LUMatriciesAndAnswer {
 	public void printMatrices() {
 		
 		for(int i = 0; i < U.length; i++) {
+			System.out.print("\n");
 			for(int j = 0; j < U.length; j++) {
-				
+				System.out.print(U[i][j] + " ");
+			}
+		}
+		
+		System.out.print("\n");
+		
+		for(int i = 0; i < L.length; i++) {
+			System.out.print("\n");
+			for(int j = 0; j < L.length; j++) {
+				System.out.print(L[i][j] + " ");
 			}
 		}
 		

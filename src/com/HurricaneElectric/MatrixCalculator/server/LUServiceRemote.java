@@ -10,33 +10,40 @@ public class LUServiceRemote extends RemoteServiceServlet implements LUService {
 		
 		// Initialize L and U matrices
 		double [][] L = new double[matrix.length][matrix.length], U = matrix;
-		double []tempRow = new double[matrix.length];
 		boolean unstable = false;
 		double pivot = 0;
 		
-		for(int i = 0; i < matrix.length && !unstable; i++) {
+		// Set the diagonal of L to 1
+		for(int i = 0; i < matrix.length; i++) {
+			L[i][i] = 1;
+		}
+		
+		for(int i = 0; i < matrix.length - 1 && !unstable; i++) {
 			
 			pivot = U[i][i];
 			// If the pivot is 0, then the factoring is unstable
 			if(pivot == 0)
 				unstable = true;
 			
-			for(int j = i; j < matrix.length && !unstable; j++) {
+			for(int j = i+1; j < matrix.length && !unstable; j++) {
+				
 				// Populate the L matrix
-				if(i!=j)
-					L[i][j] = U[i][j]/U[i][i];
-				else
-					L[i][j] = 1;
+				L[j][i] = U[j][i]/U[i][i];
 				
 				for(int k = i; k < matrix.length; k++) {
-					U[j][k] = (-L[i][k])*U[i][k]+U[j][k];
+					U[j][k] = (-L[j][i])*U[i][k] + U[j][k];
+					
+					// Something is extremely close to 0. Let's just round it
+					/*if(Math.abs(U[j][k]) < 1/100000) {
+						U[j][k] = Math.round(U[j][k]);
+					} */
 				}
 				
 			}
 		}
 		
 		
-		
+		new LUMatriciesAndAnswer(L,U).printMatrices();
 		
 		return new LUMatriciesAndAnswer(L,U);
 	}
