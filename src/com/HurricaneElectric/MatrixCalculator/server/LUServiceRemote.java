@@ -31,19 +31,18 @@ public class LUServiceRemote extends RemoteServiceServlet implements LUService {
 				L[j][i] = U[j][i]/U[i][i];
 				
 				for(int k = i; k < matrix.length; k++) {
-					U[j][k] = (-L[j][i])*U[i][k] + U[j][k];
-					
-					// Something is extremely close to 0. Let's just round it
-					/*if(Math.abs(U[j][k]) < 1/100000) {
-						U[j][k] = Math.round(U[j][k]);
-					} */
+					if(k == i)
+						// Get rid of any small non-zero values arbitrarily
+						U[j][k] = 0; 
+					else
+						U[j][k] = (-L[j][i])*U[i][k] + U[j][k];
 				}
 				
 			}
 		}
 		
 		
-		new LUMatriciesAndAnswer(L,U).printMatrices();
+		//new LUMatriciesAndAnswer(L,U).printMatrices();
 		
 		return new LUMatriciesAndAnswer(L,U);
 	}
