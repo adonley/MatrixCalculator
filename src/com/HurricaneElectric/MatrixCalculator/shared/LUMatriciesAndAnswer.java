@@ -9,6 +9,12 @@ public class LUMatriciesAndAnswer implements Serializable {
 	private double U[][];
 	private double ans[];
 	
+	public LUMatriciesAndAnswer() {
+		L = null;
+		U = null;
+		ans = null;
+	}
+	
 	public LUMatriciesAndAnswer(int size) {
 		setL(new double[size][size]);
 		setU(new double[size][size]);

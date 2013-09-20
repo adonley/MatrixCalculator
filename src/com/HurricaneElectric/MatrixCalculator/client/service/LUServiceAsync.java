@@ -4,6 +4,6 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 
 public interface LUServiceAsync {
 	
-	void luFactor(double [][] matrix, AsyncCallback callback);
+	void luFactor(String matrixString, AsyncCallback callback);
 
 }

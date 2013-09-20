@@ -6,8 +6,10 @@ import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
 public class LUServiceRemote extends RemoteServiceServlet implements LUService {
 
-	public LUMatriciesAndAnswer luFactor(double[][] matrix) {
+	public LUMatriciesAndAnswer luFactor(String matrixString) {
 		
+		double matrix[][] = MatrixParse.squareParse(matrixString);
+				
 		// Initialize L and U matrices
 		double [][] L = new double[matrix.length][matrix.length], U = matrix;
 		boolean unstable = false;
