@@ -16,9 +16,11 @@ public class MainGUI extends Composite {
 	private TextArea textArea;
 	private Button submit;
 	protected LUServiceClientImplementation clientImp;
+	private AnswerBoxUI answerBox;
 	
 	public MainGUI(LUServiceClientImplementation clientImp) {
 		com.google.gwt.dom.client.Element matrixDiv = Document.get().getElementById("matrixInput");
+		answerBox = new AnswerBoxUI();
 		
 		this.clientImp = clientImp;
 		
@@ -38,6 +40,7 @@ public class MainGUI extends Composite {
 		// Add The Text Area to the Vertical Panel
 		vPanel.add(textArea);
 		vPanel.add(submit);
+		vPanel.add(answerBox);
 		
 		initWidget(vPanel);
 	}
@@ -53,27 +56,12 @@ public class MainGUI extends Composite {
 		}	
 	}
 	
-	public void updateLU(double L[][], double U[][]) {
-		
-		String formattedMatrices = new String("");
-		
-		for(int i = 0; i < L.length; i++) {
-			for(int j = 0; j < L.length; j++) {
-				formattedMatrices += L[i][j] + " ";
-			}
-			
-			formattedMatrices += "      ";
-			
-			for(int k = 0; k < U.length; k++) {
-				formattedMatrices += U[i][k] + " ";
-			}
-			
-			formattedMatrices += "\n";
-		}
-		
-		clearTextArea();
-		setTextArea(formattedMatrices);
-		
+	public void updateLU(double L[][], double U[][]) { 
+		answerBox.updateAnswer(L, U);
+	}
+	
+	public void updateError(String text) { 
+		answerBox.updateAnswer(text);
 	}
 	
 }
