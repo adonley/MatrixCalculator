@@ -1,4 +1,4 @@
-package com.HurricaneElectric.MatrixCalculator.client.service;
+package com.HurricaneElectric.MatrixCalculator.client.service.LUService;
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
 

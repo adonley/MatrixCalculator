@@ -5,9 +5,9 @@ import java.io.Serializable;
 public class LUMatriciesAndAnswer implements Serializable {
 	
 	private static final long serialVersionUID = 6052289893393235058L;
-	private double L[][];
-	private double U[][];
-	private double ans[];
+	protected double L[][];
+	protected double U[][];
+	protected double ans[];
 	
 	public LUMatriciesAndAnswer() {
 		L = null;

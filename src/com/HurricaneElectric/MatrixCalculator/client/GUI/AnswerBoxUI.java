@@ -14,9 +14,9 @@ public class AnswerBoxUI extends Composite {
 	public AnswerBoxUI() {
 		
 		lTable = new FlexTable();
-		lTable.setStylePrimaryName("border-style:solid; border:1px;");
+		//lTable.setStylePrimaryName("border-style:solid; border:1px;");
 		uTable = new FlexTable();
-		uTable.setStylePrimaryName("border-style:solid; border:1px;");
+		//uTable.setStylePrimaryName("border-style:solid; border:1px;");
 		lbl = new Label();
 		
 		initWidget(vPanel);

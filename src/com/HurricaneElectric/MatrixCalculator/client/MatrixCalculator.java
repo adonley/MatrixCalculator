@@ -1,18 +1,18 @@
 package com.HurricaneElectric.MatrixCalculator.client;
 
-import com.HurricaneElectric.MatrixCalculator.client.service.LUServiceClientImplementation;
+import com.HurricaneElectric.MatrixCalculator.client.service.ServiceController;
 import com.google.gwt.core.client.EntryPoint;
-import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.RootPanel;
 
 public class MatrixCalculator implements EntryPoint {
 	
-	private LUServiceClientImplementation clientImp;
+	private ServiceController controller;
 
 	public void onModuleLoad() {
 
-		clientImp = new LUServiceClientImplementation(GWT.getHostPageBaseURL() + "matrixcalculator/luservice"); 
-		RootPanel.get("matrixInput").add(clientImp.getGUI());
+		//clientImp = new LUServiceClientImplementation(GWT.getHostPageBaseURL() + "matrixcalculator/luservice"); 
+		controller = new ServiceController();
+		RootPanel.get("matrixInput").add(controller.getGUI());
 
 	}
 }

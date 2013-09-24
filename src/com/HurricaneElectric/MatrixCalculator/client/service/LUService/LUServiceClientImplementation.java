@@ -1,4 +1,4 @@
-package com.HurricaneElectric.MatrixCalculator.client.service;
+package com.HurricaneElectric.MatrixCalculator.client.service.LUService;
 
 import com.HurricaneElectric.MatrixCalculator.client.GUI.MainGUI;
 import com.HurricaneElectric.MatrixCalculator.shared.LUMatriciesAndAnswer;
@@ -11,26 +11,23 @@ public class LUServiceClientImplementation {
 	private LUServiceAsync luService;
 	private MainGUI gui;
 	
-	public LUServiceClientImplementation(String url) {
+	public LUServiceClientImplementation(String url,MainGUI gui) {
 		//System.out.println(url);
+		this.gui = gui;
 		this.luService = GWT.create(LUService.class);
 		ServiceDefTarget endpoint = (ServiceDefTarget) this.luService;
 		//System.out.print((ServiceDefTarget)this.luService);
 		endpoint.setServiceEntryPoint(url);
-		this.gui = new MainGUI(this);
 	}
 	
 	public void luFactor(String matrixString) {
 		this.luService.luFactor(matrixString, new LUCallback());
 	}
 	
-	public MainGUI getGUI() { return gui; }
-	
 	private class LUCallback implements AsyncCallback {
 
 		public void onFailure(Throwable caught) {
-			// TODO Auto-generated method stub
-			System.out.println("Error.\n");
+			System.out.println("Error with callback.\n");
 			
 		}
 

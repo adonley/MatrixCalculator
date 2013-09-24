@@ -2,11 +2,12 @@ package com.HurricaneElectric.MatrixCalculator.server;
 
 import com.HurricaneElectric.MatrixCalculator.client.service.LUService.LUService;
 import com.HurricaneElectric.MatrixCalculator.shared.LUMatriciesAndAnswer;
+import com.HurricaneElectric.MatrixCalculator.shared.QRMatricesAndAnswer;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
-public class LUServiceRemote extends RemoteServiceServlet implements LUService {
+public class QRServiceRemote extends RemoteServiceServlet implements LUService {
 
-	private static final long serialVersionUID = 5338529855716855548L;
+	private static final long serialVersionUID = -8787592976571518889L;
 
 	public LUMatriciesAndAnswer luFactor(String matrixString) {
 		
@@ -45,11 +46,8 @@ public class LUServiceRemote extends RemoteServiceServlet implements LUService {
 			}
 		}
 		
-		
-		//new LUMatriciesAndAnswer(L,U).printMatrices();
-		
-		return new LUMatriciesAndAnswer(L,U);
+		return new QRMatricesAndAnswer(L,U);
 	}
 
-	
+
 }
