@@ -2,11 +2,13 @@ package com.HurricaneElectric.MatrixCalculator.client.service;
 
 import com.HurricaneElectric.MatrixCalculator.client.GUI.MainGUI;
 import com.HurricaneElectric.MatrixCalculator.client.service.LUService.LUServiceClientImplementation;
+import com.HurricaneElectric.MatrixCalculator.client.service.QRFactor.QRServiceClientImplementation;
 import com.google.gwt.core.client.GWT;
 
 public class ServiceController {
 
 	private LUServiceClientImplementation luService;
+	private QRServiceClientImplementation qrService;
 	private MainGUI gui;
 	
 	public ServiceController() {
@@ -16,6 +18,7 @@ public class ServiceController {
 		
 		// Start up the lu factoring service
 		luService = new LUServiceClientImplementation(GWT.getHostPageBaseURL() + "matrixcalculator/luservice",gui); 
+		qrService = new QRServiceClientImplementation(GWT.getHostPageBaseURL() + "matrixcalculator/qrservice",gui);
 
 	}
 
@@ -28,6 +31,10 @@ public class ServiceController {
 	public void luFactor(String matrixString) { luService.luFactor(matrixString); }
 	
 	public LUServiceClientImplementation getLUService() { return luService; }
+	
+	public void qrFactor(String matrixString) { qrService.qrFactor(matrixString); }
+	
+	public QRServiceClientImplementation getQRService() { return qrService; }
 	
 	
 }

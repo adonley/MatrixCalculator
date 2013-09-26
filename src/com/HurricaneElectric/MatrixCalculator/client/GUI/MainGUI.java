@@ -1,10 +1,8 @@
 package com.HurricaneElectric.MatrixCalculator.client.GUI;
 
+import com.HurricaneElectric.MatrixCalculator.client.GUI.Buttons.CalculateButtons;
 import com.HurricaneElectric.MatrixCalculator.client.service.ServiceController;
 import com.google.gwt.dom.client.Document;
-import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.event.dom.client.ClickHandler;
-import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.TextArea;
 import com.google.gwt.user.client.ui.VerticalPanel;
@@ -14,9 +12,9 @@ public class MainGUI extends Composite {
 	private VerticalPanel vPanel = new VerticalPanel();
 	// This text area will always be visible so let's not move it to another file.
 	private TextArea textArea;
-	private Button submit;
 	protected ServiceController controller;
 	private AnswerBoxUI answerBox;
+	private CalculateButtons buttons;
 	
 	public MainGUI(ServiceController serviceController) {
 		
@@ -33,15 +31,12 @@ public class MainGUI extends Composite {
 		textArea.setHeight(clientHeight);  
 		textArea.setStylePrimaryName("resize:none;");
 		
-		// Create and Add the button
-		submit = new Button("Calculate");
-		submit.addClickHandler(new CalculateHandler());
-		
-		
 		// Add The Text Area to the Vertical Panel
 		vPanel.add(textArea);
-		vPanel.add(submit);
 		vPanel.add(answerBox);
+		
+		// This is a horrible way to do this, but I am using it for testing right now
+		buttons = new CalculateButtons(controller);
 		
 		initWidget(vPanel);
 		
@@ -51,14 +46,9 @@ public class MainGUI extends Composite {
 	public void clearTextArea() { textArea.setText(""); }
 	public String getTextArea() { return textArea.getText(); }
 	
-	private class CalculateHandler implements ClickHandler {
-
-		public void onClick(ClickEvent event) {	
-			 controller.luFactor(textArea.getText());
-		}	
-	}
+	public String getText() { return textArea.getText(); }
 	
-	public void updateLU(double L[][], double U[][]) { 
+	public void updateAnswer(double L[][], double U[][]) { 
 		answerBox.updateAnswer(L, U);
 	}
 	

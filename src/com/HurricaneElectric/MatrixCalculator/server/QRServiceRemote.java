@@ -1,15 +1,14 @@
 package com.HurricaneElectric.MatrixCalculator.server;
 
-import com.HurricaneElectric.MatrixCalculator.client.service.LUService.LUService;
-import com.HurricaneElectric.MatrixCalculator.shared.LUMatriciesAndAnswer;
+import com.HurricaneElectric.MatrixCalculator.client.service.QRFactor.QRService;
 import com.HurricaneElectric.MatrixCalculator.shared.QRMatricesAndAnswer;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
-public class QRServiceRemote extends RemoteServiceServlet implements LUService {
+public class QRServiceRemote extends RemoteServiceServlet implements QRService {
 
 	private static final long serialVersionUID = -8787592976571518889L;
 
-	public LUMatriciesAndAnswer luFactor(String matrixString) {
+	public QRMatricesAndAnswer qrFactor(String matrixString) {
 		
 		double matrix[][] = MatrixParse.squareParse(matrixString);
 				

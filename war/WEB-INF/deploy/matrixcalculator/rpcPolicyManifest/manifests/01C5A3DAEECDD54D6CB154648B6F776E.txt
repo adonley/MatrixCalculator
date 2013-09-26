@@ -1,0 +1,2 @@
+serviceClass: com.HurricaneElectric.MatrixCalculator.client.service.QRFactor.QRService
+path: 2C8A45D51CD4E3DEEA8BBA29DC11E0B3.gwt.rpc

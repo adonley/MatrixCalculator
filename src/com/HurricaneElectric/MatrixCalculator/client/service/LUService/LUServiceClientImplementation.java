@@ -40,7 +40,7 @@ public class LUServiceClientImplementation {
 				LUMatriciesAndAnswer tempMatrices = (LUMatriciesAndAnswer)result;
 				double tempL[][] = tempMatrices.getL();
 				double tempU[][] = tempMatrices.getU();
-				gui.updateLU(tempL,tempU);
+				gui.updateAnswer(tempL,tempU);
 			}
 			
 		}

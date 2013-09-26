@@ -1,0 +1,2 @@
+serviceClass: com.HurricaneElectric.MatrixCalculator.client.service.LUService.LUService
+path: 8BD1B0FEF6E3F6D52BD6FD0D721CC348.gwt.rpc

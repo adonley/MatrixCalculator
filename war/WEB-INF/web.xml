@@ -10,10 +10,18 @@
   	<servlet-name>luServlet</servlet-name>
   	<servlet-class>com.HurricaneElectric.MatrixCalculator.server.LUServiceRemote</servlet-class>
   </servlet>
-  
   <servlet-mapping>
   	<servlet-name>luServlet</servlet-name>
   	<url-pattern>/matrixcalculator/luservice</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>qrServlet</servlet-name>
+  	<servlet-class>com.HurricaneElectric.MatrixCalculator.server.QRServiceRemote</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>qrServlet</servlet-name>
+  	<url-pattern>/matrixcalculator/qrservice</url-pattern>
   </servlet-mapping>
   
   <!-- Default page to serve -->
